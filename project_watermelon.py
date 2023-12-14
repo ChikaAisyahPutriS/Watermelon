@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import numpy as np
 
-st.title("Human Development Index 2021 (HDI)")
-st.write("Oleh Watermelon group")
+st.title("WORLD HAPPINESS")
+st.write("Oleh Watermelon")
 st.write("# Introduction")
 
 """
@@ -11,7 +12,7 @@ pendahuluan
 """
 
 #reading the data
-df = pd.read_csv("data/HDI.csv")
+df = pd.read_csv("")
 #df = pd.read_csv('data file HDI dataset')
 
 #Getting an overview of the data.
