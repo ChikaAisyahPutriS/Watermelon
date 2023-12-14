@@ -11,8 +11,9 @@ pendahuluan
 """
 
 #reading the data
-dfhdi = pd.read_csv( 'data/HDI_dataset.csv' )
-#df = pd.read_csv('data file HDI_dataset')
+dfhdi = pd.read_csv( 'data/HDI.csv' )
+#df = pd.read_csv('data file HDI dataset')
 
-#Getting an overview of the data. 
+#Getting an overview of the data.
+st.write("## 5 data pertama")
 dfhdi.head()
