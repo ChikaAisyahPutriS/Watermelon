@@ -5,9 +5,13 @@ from matplotlib import pyplot as plt
 import plotly. express as px
 
 st.title("WORLD HAPPINESS REPORT")
-st.write("Nama Kelompok Watermelon")
-st.write("Diah Ayu Mailadani 021002204001",
-         "Chika Aisyah Putri Setianto 021002204002")
+st.write("## Kelompok Watermelon")
+st.write("""
+### Nama Anggota:
+##### Diah Ayu Mailadani 021002204001
+##### Chika Aisyah Putri Setianto 021002204002
+##### Chika Ristysuatantri 021002201017
+""")
 
 st.write("#pendahuluan")
 st.write("")

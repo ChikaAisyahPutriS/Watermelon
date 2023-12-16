@@ -4,22 +4,41 @@ import streamlit as st
 from matplotlib import pyplot as plt
 import plotly. express as px
 
-st.title("WORLD HAPPINESS REPORT")
-st.write("Nama Kelompok Watermelon")
-st.write("Diah Ayu Mailadani 021002204001",
-         "Chika Aisyah Putri Setianto 021002204002")
 
-st.write("#pendahuluan")
-st.write("The World Happiness Report is a landmark survey of the state of global happiness, 2019 report. The scores are based on answers to the main life evaluation question asked in the poll. The columns following the happiness score estimate the extent to which each of six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity – contribute to making life evaluations higher in each country than they are in Dystopia, a hypothetical country that has values equal to the world’s lowest national averages for each of the six factors.")
+st.title("WORLD HAPPINESS REPORT")
+st.write("## Kelompok Watermelon")
+st.write("""
+##### Nama Anggota:
+###### Diah Ayu Mailadani (021002204001)
+###### Chika Aisyah Putri Setianto (021002204002)
+###### Chika Ristysuatantri (021002201017)
+""")
+
+
+st.write( "PENDAHULUAN" )
+st.write("""Happiness Index, atau yang dikenal juga sebagai World Happiness Report, adalah sebuah laporan tahunan yang diterbitkan oleh Perserikatan Bangsa-Bangsa (PBB) yang mengukur tingkat kebahagiaan di berbagai negara di dunia.  Laporan ini pertama kali diterbitkan pada tahun 2012 dan mengevaluasi faktor-faktor yang berkontribusi terhadap kebahagiaan masyarakat.
+
+World Happiness Report menggunakan sejumlah indikator dan variabel untuk menilai kebahagiaan di suatu negara. Beberapa faktor yang umumnya diperhitungkan dalam indeks ini antara lain: GDP per capita, Social support (Dukungan sosial, Healthy life expectancy (Harapan Hidup Sehat), Freedom to make life choices (Kebebasan untuk memilih), Generosity (Kemurahan Hati), dan Perceptions of corruption (Persepsi terhadap Korupsi).
+
+Data-data ini dikumpulkan melalui survei yang dilakukan kepada warga negara di berbagai negara. Setiap faktor diberi bobot tertentu dan dihitung untuk memberikan skor akhir yang mencerminkan tingkat kebahagiaan suatu negara.Laporan ini memberikan wawasan tentang kualitas hidup dan kesejahteraan masyarakat di seluruh dunia.
+""")
     
 #df = pd.read_csv('data 2019.csv)
+st.text ("Data Happiness Index Report 2019" )
 df=pd.read_csv('data/2019.csv')
 df
 
 #Visual data untuk 5 negara dengan ranking tertinggi
 Highest_Ranking = st.write("## Top 5 Negara dengan Skor Tertinggi")
 st.write( df.head(5) )
-st.write ("Top five 2019 rankings of countries with the best happiness score. The GDP per capita is higher than the mean (0.905147) and above the 75% of the sample distribution. Healthy life expectancy is above the mean (0.725244) and above 75% of the sample for all the top 5 countries. Social support, freedom of choice and percerption of corruption are also above the mean and above the 75% of the sample (wich is kind of interesting data). Generosity is also above the 75% of the sample, except for Finland (ranked first) where generosity is below the mean.")
+st.write ("Lima negara dengan peringkat teratas skor Happiness Index tahun 2019. PDB per kapita lebih tinggi dari rata-rata (0,905147) dan di atas 75% sebaran sampel. Angka harapan hidup sehat berada di atas rata-rata (0,725244) dan di atas 75% sampel di 5 negara teratas. Dukungan sosial, kebebasan memilih dan persepsi korupsi juga berada di atas rata-rata dan di atas 75% sampel (yang merupakan data yang menarik). Kedermawanan juga berada di atas 75% sampel, kecuali Finlandia (peringkat pertama) yang kemurahan hatinya berada di bawah rata-rata.")
+
+st.write ( df.describe())
+st.write("""Deskripsi data umum
+Skor kebahagiaan: 
+1) Rata-rata di 156 negara adalah 5,4 pada skala 0 hingga 10. Nilai minimumnya adalah 2,85 Nilai maksimumnya adalah 7,76.
+2) PDB per kapita: Rata-rata adalah 0,905147 GPD per kapita. Kelompok 25% yang berpendapatan lebih rendah kurang dari 0,602750 GPD per kapita. Kelompok 75% yang berpendapatan lebih tinggi mempunyai lebih dari 1,232500 GPD per kapita.
+3) Angka Harapan Hidup Sehat Rata-rata angka harapan hidup adalah 0,725244. 25% terbawah berada di bawah 0,547750 angka harapan hidup, 75% tertinggi berada di atas 0,881750 angka harapan hidup.""")
 
 # Menambahkan kolom 'Wilayah' berdasarkan kelompok wilayah tertentu
 region_mapping = {
@@ -94,5 +113,15 @@ if selected_factors:
     st.plotly_chart(fig)
 else:
     st.warning('Pilih setidaknya satu faktor.')
+income=df['GDP per capita'].values
+income
+life_expectancy=df['Healthy life expectancy'].values
+life_expectancy
 
-
+# Check if an attribute is selected
+x=income
+y=life_expectancy
+plt.scatter(x,y, color='yellow')
+plt.xlabel('GDP per capita')
+plt.ylabel('Healthy life expectancy')
+plt.show()
