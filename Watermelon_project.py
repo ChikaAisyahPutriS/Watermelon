@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import plotly. express as px
 
 
@@ -113,15 +113,35 @@ if selected_factors:
     st.plotly_chart(fig)
 else:
     st.warning('Pilih setidaknya satu faktor.')
-income=df['GDP per capita'].values
-income
-life_expectancy=df['Healthy life expectancy'].values
-life_expectancy
 
-# Check if an attribute is selected
-x=income
-y=life_expectancy
-plt.scatter(x,y, color='yellow')
-plt.xlabel('GDP per capita')
-plt.ylabel('Healthy life expectancy')
-plt.show()
+income = df['GDP per capita'].values
+life_expectancy = df['Healthy life expectancy'].values
+
+# Multiselect for choosing factors
+selected_factors = st.multiselect('Pilih faktor', df.columns, default=['GDP per capita', 'Healthy life expectancy'])
+
+# Check if at least two factors are selected
+if len(selected_factors) >= 2:
+    fig, ax = plt.subplots()
+    # Display a scatter plot based on the selected factors
+    fig, ax = plt.subplots()
+    ax.scatter(df[selected_factors[0]], df[selected_factors[1]], color='red')
+    ax.set_xlabel(selected_factors[0])
+    ax.set_ylabel(selected_factors[1])
+    st.pyplot(fig)
+else:
+    st.warning('Pilih setidaknya dua faktor.')
+    
+#Contoh interpretasi scatterplot
+x = income
+y = life_expectancy
+
+# Membuat scatter plot dengan Matplotlib
+fig, ax = plt.subplots()
+ax.scatter(x, y, color='green')
+ax.set_xlabel('GDP per capita')
+ax.set_ylabel('Healthy life expectancy')
+
+# Menampilkan scatter plot di Streamlit
+st.pyplot(fig)
+st.write("""Telah dilakukan regresi terhadap 2 variabel yakni GDP percapita dan Healthy life expentacy. Dapat terlihat bahwa semakin tinggi pendapatan perkapita maka semakin baik pula harapan hidup saat lahir. tetapi, meskipun kedua variabel saling berkaitan, masih terdapat faktor lain yang mempengaruhi.""")
